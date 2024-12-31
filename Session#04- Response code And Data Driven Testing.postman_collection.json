@@ -1,0 +1,54 @@
+{
+	"info": {
+		"_postman_id": "a12a317d-6149-4bf9-a5df-761100ad8c19",
+		"name": "Session#04- Response code And Data Driven Testing",
+		"description": "### Data Driven Testing-\n\nStep 1 - Create a New Collection\n\nStep 2 - Create a POST Request\n\n- Request Method - POST\n    \n- Request Url - [https://reqres.in/api/users](https://reqres.in/api/users)\n    \n- Request Body - Since Request Body is not hardcoded we will take values from test data file. So for dynamic values we use curly braces.\n    \n\n```\n{\n    \"name\": \"{{name}}\",\n    \"job\": \"{{job}}\"\n}\n\n ```\n\nStep 3 - Create a CSV file as well as json file of test data.\n\nStep 4 - Click on 3 dots in collection and click on Run Collection.\n\nStep 5 - Specify all the fields like-\n\n- Iterations - Refers to the rows or data for which test will run. For ex- 5 test data count so fill in Iterations - 5.\n    \n- Specify Delay of 3-4 ms.\n    \n- Select the Data file.\n    \n- Click on Run.\n    \n\n### Response Code Verify-\n\nIn Scripts Tab in the POST Request, under Post-response, write below script to verify Response Status Code\n\npm.test(\"Check for Status Code\", function()\n\n{ pm.response.to.have.status(201);\n\n})",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37820929"
+	},
+	"item": [
+		{
+			"name": "POST Request - Create User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check for Status Code\", function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"job\": \"{{job}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
